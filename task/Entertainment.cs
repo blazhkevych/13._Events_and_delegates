@@ -11,17 +11,18 @@ namespace task
         // Play with tamagotchi.
         public int PlayWithTamagotchi()
         {
-            Console.WriteLine("Tamagotchi asks for food !");
-            Console.WriteLine("1. Feed the Tamagotchi." +
-                              "\n2. Refuse Tamagotchi.");
-            int hostResponse = Console.Read();
+            Console.WriteLine("\nThe Tamagotchi has a playful mood. Do you play with him ?");
+            Console.WriteLine("1. Yes." +
+                              "\n2. No.");
+            int hostResponse = Convert.ToInt32(Console.ReadLine());
             if (hostResponse == 2)
             {
+                Console.WriteLine("Tips >>> If you do not play with Tamagotchi, he will be in a bad mood !");
                 return 1;
             }
             else
             {
-                Console.WriteLine("Tamagotchi is beside himself with entertainment ...");
+                Console.WriteLine("Tamagotchi glows with happiness when you play with it ...");
                 return 0;
             }
 

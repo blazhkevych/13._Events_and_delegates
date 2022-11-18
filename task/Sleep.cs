@@ -11,10 +11,10 @@ namespace task
         // Put the tamagotchi to sleep.
         public int PutTheTamagotchiToSleep()
         {
-            Console.WriteLine("Tamagotchi looks sleepy. He probably wants to sleep. Let's put the Tamagotchi to sleep ?");
+            Console.WriteLine("\nTamagotchi looks sleepy. He probably wants to sleep. Let's put the Tamagotchi to sleep ?");
             Console.WriteLine("1. Yes." +
                               "\n2. No.");
-            int hostResponse = Console.Read();
+            int hostResponse = Convert.ToInt32(Console.ReadLine());
             if (hostResponse == 2)
             {
                 Console.WriteLine("Tips >>> If Tamagotchi doesn't sleep, he won't live long...");

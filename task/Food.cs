@@ -11,10 +11,10 @@ namespace task
         // Feed the Tamagotchi.
         public int FeedTheTamagotchi()
         {
-            Console.WriteLine("Tamagotchi asks for food ! Feed the Tamagotchi ?");
+            Console.WriteLine("\nI want to eat ! Will you feed me ?");
             Console.WriteLine("1. Yes." +
                               "\n2. No.");
-            int hostResponse = Console.Read();
+            int hostResponse = Convert.ToInt32(Console.ReadLine());
             if (hostResponse == 2)
             {
                 Console.WriteLine("Tips >>> If you don't feed your Tamagotchi, he will starve to death.");

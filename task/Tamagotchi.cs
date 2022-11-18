@@ -1,4 +1,7 @@
-﻿namespace task
+﻿using System.Drawing;
+using System.Xml.Linq;
+
+namespace task
 {
     delegate int MyDelegate();
 
@@ -7,6 +10,13 @@
     {
         public event MyDelegate _ev;
         public List<MyDelegate> _list;
+
+        // Tamagotchi name.
+        public string Name { get; set; }
+
+        //public string Stage { get; set; }
+        //ConsoleColor Color { get; set; }
+
 
         // Number of unsatisfied requests.
         public int NumberOfUnsatisfiedRequests { get; set; } // Max 3.
@@ -23,21 +33,157 @@
         // Character life cycle stop.
         public DateTime LifeCycleStop { get; set; }
 
-        // Changing the value of the Tamagotchi life cycle.
-        //void TamagotchiLifecycleManagement()
-        //{
-        //    //DateTime
-        //}
+        // Tama talks.
+        public void TamaTalks(string String)
+        {
+            //Console.ForegroundColor = Color;
+            Console.WriteLine();
+            Console.Write("{0}: ", Name);
+            //Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(String);
+            Console.WriteLine();
+            System.Threading.Thread.Sleep(1000);
+        }
 
-        // Shows the life cycle of Tamagotchi.
-        //public void ShowLifeCycle()
-        //{
-        //    Console.WriteLine();
-        //}
+        // Show Tama name.
+        public void WriteName()
+        {
+            Console.SetCursorPosition(7, 1);
+            Console.WriteLine("  ♥  ♥  ♥  {0}  ♥  ♥  ♥", Name);
+            Console.WriteLine();
+        }
+
+        // The birth of the Tamagotchi.
+        public void Hatching()
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                Console.Clear();
+
+                WriteName();
+
+                if (i % 2 == 0)
+                    Egg();
+                else if (i % 3 == 0)
+                    Egg2();
+                else
+                    Egg3();
+
+                //Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine(Name + " is hatching!!");
+                System.Threading.Thread.Sleep(200);
+                //Console.ForegroundColor = ConsoleColor.White;
+            }
+
+            Console.Clear();
+            WriteName();
+            Egg();
+            //Console.ForegroundColor = ConsoleColor.White;
+            System.Threading.Thread.Sleep(500);
+
+            Console.Clear();
+            WriteName();
+            Egg4();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            TamaTalks("\"MOMMY!\"");
+            System.Threading.Thread.Sleep(400);
+            TamaTalks("\"*squeeek*\"");
+            System.Threading.Thread.Sleep(800);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        void Egg()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("                    ■■       ");
+            Console.WriteLine("                  ■    ■     ");
+            Console.WriteLine("                ■        ■   ");
+            Console.WriteLine("               ■          ■  ");
+            Console.WriteLine("              ■            ■ ");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("               ■          ■  ");
+            Console.WriteLine("                 ■ ■■■■ ■    ");
+        }
+
+        void Egg2()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("                   ■■        ");
+            Console.WriteLine("                 ■    ■      ");
+            Console.WriteLine("               ■        ■    ");
+            Console.WriteLine("              ■          ■   ");
+            Console.WriteLine("             ■             ■  ");
+            Console.WriteLine("            ■               ■ ");
+            Console.WriteLine("            ■               ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("               ■          ■  ");
+            Console.WriteLine("                 ■ ■■■■ ■    ");
+        }
+
+        void Egg3()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("                     ■■      ");
+            Console.WriteLine("                   ■    ■     ");
+            Console.WriteLine("                 ■        ■   ");
+            Console.WriteLine("               ■           ■  ");
+            Console.WriteLine("              ■             ■ ");
+            Console.WriteLine("             ■               ■");
+            Console.WriteLine("             ■               ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("               ■          ■  ");
+            Console.WriteLine("                 ■ ■■■■ ■    ");
+        }
+
+        void Egg4()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("                    ■■       ");
+            Console.WriteLine("                  ■    ■     ");
+            Console.WriteLine("                ■        ■   ");
+            Console.WriteLine("              ■            ■ ");
+            Console.WriteLine("             ■  ■ ■ ■■ ■ ■  ■");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("              ■  ■      ■  ■ ");
+            Console.WriteLine("              ■    ■■■■    ■ ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("             ■  ■ ■ ■■ ■ ■  ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("             ■              ■");
+            Console.WriteLine("               ■          ■  ");
+            Console.WriteLine("                 ■ ■■■■ ■    ");
+        }
+
+
+        public void Dead()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("                   ■ ■ ■ ■      ");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("             ■ ■ ■ ■     ■ ■ ■ ■");
+            Console.WriteLine("             ■      R.I.P.     ■");
+            Console.WriteLine("             ■ ■ ■ ■     ■ ■ ■ ■");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("                   ■     ■      ");
+            Console.WriteLine("                   ■ ■ ■ ■      ");
+        }
+
 
         // Constructor.
-        public Tamagotchi()
+        public Tamagotchi(string name)
         {
+            //Stage = "egg";
+            //Color = ConsoleColor.White;
+            Name = name;
             Random r = new Random();
             LifeCycleStart = DateTime.Now;
             NumberOfUnsatisfiedRequests = 0;
@@ -53,7 +199,3 @@
 
     }
 }
-
-// покормить(Food.FeedTheTamagotchi), погулять(Walk.WalkWithTamagotchi),
-// уложить спать(Sleep.PutTheTamagotchiToSleep), полечить(Hospital.TreatTamagotchi),
-// поиграть(Entertainment.PlayWithTamagotchi).
