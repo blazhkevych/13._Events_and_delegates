@@ -26,5 +26,13 @@ namespace task
                 return 0;
             }
         }
+
+        // Constructor.
+        public string TamaName { get; set; }
+
+        public Food(string tamaName)
+        {
+            TamaName = tamaName;
+        }
     }
 }

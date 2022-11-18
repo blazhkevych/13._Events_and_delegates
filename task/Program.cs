@@ -27,13 +27,14 @@
             Console.ResetColor();
             // Give your Tamagotchi a name.
             Console.WriteLine("Give your Tamagotchi a name:");
-            Tamagotchi tamagotchi = new Tamagotchi(Console.ReadLine());
+            string tamaName = Console.ReadLine();
+            Tamagotchi tamagotchi = new Tamagotchi(tamaName);
 
-            //Food food = new Food();
-            //Walk walk = new Walk();
-            //Sleep sleep = new Sleep();
-            //Hospital hospital = new Hospital();
-            //Entertainment entertainment = new Entertainment();
+            Food food = new Food(tamaName);
+            Walk walk = new Walk(tamaName);
+            Sleep sleep = new Sleep(tamaName);
+            Hospital hospital = new Hospital(tamaName);
+            Entertainment entertainment = new Entertainment(tamaName);
 
             //tamagotchi._ev += food.FeedTheTamagotchi;
             //tamagotchi._ev += walk.WalkWithTamagotchi;
