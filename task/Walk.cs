@@ -9,9 +9,22 @@ namespace task
     internal class Walk
     {
         // Walk with tamagotchi.
-        public void WalkWithTamagotchi()
+        public int WalkWithTamagotchi()
         {
-            Console.WriteLine("Tamagotchi enjoys walking ...");
+            Console.WriteLine("Tamagotchi asks to walk with him ! Shall we go for a walk with the Tamagotchi ?");
+            Console.WriteLine("1. Yes." +
+                              "\n2. No.");
+            int hostResponse = Console.Read();
+            if (hostResponse == 2)
+            {
+                Console.WriteLine("Tips >>> If you do not walk with Tamagotchi, it will not end well for him.");
+                return 1;
+            }
+            else
+            {
+                Console.WriteLine("Tamagotchi enjoys walking ...");
+                return 0;
+            }
         }
     }
 }

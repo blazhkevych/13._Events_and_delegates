@@ -9,9 +9,23 @@ namespace task
     internal class Sleep
     {
         // Put the tamagotchi to sleep.
-        public void PutTheTamagotchiToSleep()
+        public int PutTheTamagotchiToSleep()
         {
-            Console.WriteLine("Tamagotchi sleeps sweetly ...");
+            Console.WriteLine("Tamagotchi looks sleepy. He probably wants to sleep. Let's put the Tamagotchi to sleep ?");
+            Console.WriteLine("1. Yes." +
+                              "\n2. No.");
+            int hostResponse = Console.Read();
+            if (hostResponse == 2)
+            {
+                Console.WriteLine("Tips >>> If Tamagotchi doesn't sleep, he won't live long...");
+                return 1;
+            }
+            else
+            {
+                Console.WriteLine("Tamagotchi sleeps sweetly ...");
+                return 0;
+            }
+
 
         }
     }

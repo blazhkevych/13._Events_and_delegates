@@ -9,9 +9,22 @@ namespace task
     internal class Entertainment
     {
         // Play with tamagotchi.
-        public void PlayWithTamagotchi()
+        public int PlayWithTamagotchi()
         {
-            Console.WriteLine("Tamagotchi is beside himself with entertainment ...");
+            Console.WriteLine("Tamagotchi asks for food !");
+            Console.WriteLine("1. Feed the Tamagotchi." +
+                              "\n2. Refuse Tamagotchi.");
+            int hostResponse = Console.Read();
+            if (hostResponse == 2)
+            {
+                return 1;
+            }
+            else
+            {
+                Console.WriteLine("Tamagotchi is beside himself with entertainment ...");
+                return 0;
+            }
+
         }
     }
 }

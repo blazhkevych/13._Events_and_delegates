@@ -32,17 +32,40 @@
             Hospital hospital = new Hospital();
             Entertainment entertainment = new Entertainment();
 
-            tamagotchi._ev += food.FeedTheTamagotchi;
-            tamagotchi._ev += walk.WalkWithTamagotchi;
-            tamagotchi._ev += sleep.PutTheTamagotchiToSleep;
-            tamagotchi._ev += hospital.TreatTamagotchi;
-            tamagotchi._ev += entertainment.PlayWithTamagotchi;
+            //tamagotchi._ev += food.FeedTheTamagotchi;
+            //tamagotchi._ev += walk.WalkWithTamagotchi;
+            //tamagotchi._ev += sleep.PutTheTamagotchiToSleep;
+            //tamagotchi._ev += hospital.TreatTamagotchi;
+            //tamagotchi._ev += entertainment.PlayWithTamagotchi;
 
-            tamagotchi.EventCaller();
+            //tamagotchi.EventCaller();
 
+            Random rand = new Random();
+            int previousValue = -1;
+            int newValue = -1;
+            do
+            {
+                do
+                {
+                    newValue = rand.Next(0, 5);
+                } while (newValue == previousValue);
 
+                tamagotchi.NumberOfUnsatisfiedRequests = tamagotchi._list[newValue].Invoke();
+                previousValue = newValue;
 
+                if (tamagotchi.NumberOfUnsatisfiedRequests == 3)
+                {
+                    Console.WriteLine("You drove the Tamagotchi to death. You must be ashamed !");
 
+                    // Place to display the Tamagotchi face.
+
+                    Environment.Exit(0);
+                }
+
+            } while (tamagotchi.LifeCycleStop > DateTime.Now);
+
+            Console.WriteLine("Tamagotchi's life is over." +
+                              "\n He lived a long and happy life !");
         }
     }
 }
