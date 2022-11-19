@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Xml.Linq;
 
 namespace task
@@ -8,8 +9,48 @@ namespace task
     // Tamagotchi class.
     internal class Tamagotchi
     {
-        public event MyDelegate _ev;
-        public List<MyDelegate> _list;
+        //public event MyDelegate _ev ;
+        public event MyDelegate _food;
+        public event MyDelegate _walk;
+        public event MyDelegate _sleep;
+        public event MyDelegate _hospital;
+        public event MyDelegate _entertainment;
+
+        public List<MyDelegate> _list = new List<MyDelegate>();
+
+        public event MyDelegate ev
+        {
+            // Используем аксессоры событий
+            add
+            {
+                _list.Add(value);
+            }
+
+            remove
+            {
+                _list.Remove(value);
+            }
+        }
+
+        public void GeneratorEventRandom()
+        {
+            Random r = new Random();
+            _list.ElementAt(r.Next(0, 5)); 
+            //for (int i = 0; i < _list.Count; i++)
+            
+
+
+            //Console.WriteLine("Произошло событие!");
+            //if (_list.Count != 0)
+            //    foreach (MyDelegate del in _list)
+            //    {
+            //        del();
+            //    }
+        }
+
+
+        // ...
+        //public List<MyDelegate> _list;
 
         // Tamagotchi name.
         public string Name { get; set; }
@@ -188,12 +229,12 @@ namespace task
             LifeCycleStart = DateTime.Now;
             NumberOfUnsatisfiedRequests = 0;
             LifeCycleStop = LifeCycleStart.AddSeconds(r.Next(60, 121));
-            _list = new List<MyDelegate>
-            {
-                new Food().FeedTheTamagotchi, new Walk().WalkWithTamagotchi,
-                new Sleep().PutTheTamagotchiToSleep, new Hospital().TreatTamagotchi,
-                new Entertainment().PlayWithTamagotchi
-            };
+
+            //_list.Add(_food);
+            //_list.Add(_walk);
+            //_list.Add(_sleep);
+            //_list.Add(_hospital);
+            //_list.Add(_entertainment);
         }
 
 

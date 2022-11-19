@@ -27,9 +27,10 @@ namespace task
             }
         }
 
-        // Constructor.
+        // Tama name.
         public string TamaName { get; set; }
 
+        // Constructor.
         public Food(string tamaName)
         {
             TamaName = tamaName;

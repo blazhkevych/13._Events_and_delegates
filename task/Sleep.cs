@@ -25,8 +25,15 @@ namespace task
                 Console.WriteLine("Tamagotchi sleeps sweetly ...");
                 return 0;
             }
+        }
 
+        // Tama name.
+        public string TamaName { get; set; }
 
+        // Constructor.
+        public Sleep(string tamaName)
+        {
+            TamaName = tamaName;
         }
     }
 }

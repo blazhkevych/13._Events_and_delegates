@@ -26,5 +26,14 @@ namespace task
                 return 0;
             }
         }
+
+        // Tama name.
+        public string TamaName { get; set; }
+
+        // Constructor.
+        public Walk(string tamaName)
+        {
+            TamaName = tamaName;
+        }
     }
 }

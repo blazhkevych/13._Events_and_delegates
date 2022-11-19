@@ -36,11 +36,17 @@
             Hospital hospital = new Hospital(tamaName);
             Entertainment entertainment = new Entertainment(tamaName);
 
-            //tamagotchi._ev += food.FeedTheTamagotchi;
-            //tamagotchi._ev += walk.WalkWithTamagotchi;
-            //tamagotchi._ev += sleep.PutTheTamagotchiToSleep;
-            //tamagotchi._ev += hospital.TreatTamagotchi;
-            //tamagotchi._ev += entertainment.PlayWithTamagotchi;
+            tamagotchi._food += food.FeedTheTamagotchi;
+            tamagotchi._walk += walk.WalkWithTamagotchi;
+            tamagotchi._sleep += sleep.PutTheTamagotchiToSleep;
+            tamagotchi._hospital += hospital.TreatTamagotchi;
+            tamagotchi._entertainment += entertainment.PlayWithTamagotchi;
+
+            tamagotchi._list.Add(food.FeedTheTamagotchi);
+            tamagotchi._list.Add(walk.WalkWithTamagotchi);
+            tamagotchi._list.Add(sleep.PutTheTamagotchiToSleep);
+            tamagotchi._list.Add(hospital.TreatTamagotchi);
+            tamagotchi._list.Add(entertainment.PlayWithTamagotchi);
 
             //tamagotchi.EventCaller();
 
@@ -59,10 +65,28 @@
                 } while (newValue == previousValue);
 
                 tamagotchi.TamaTalks("");
-                tamagotchi.NumberOfUnsatisfiedRequests = tamagotchi._list[newValue].Invoke();
+                //tamagotchi.NumberOfUnsatisfiedRequests = tamagotchi;
+                //Random r = new Random();
+                //int selector = r.Next(1, 6);
+                //switch (selector)
+                //{
+                //    case 1:
+                //        break;
+                //    case 2:
+                //        break;
+                //    case 3:
+                //        break;
+                //    case 1:
+                //        break;
+                //    case 1:
+                //        break;
+
+                tamagotchi.GeneratorEventRandom();
+                //}
+
                 previousValue = newValue;
 
-                if (tamagotchi.NumberOfUnsatisfiedRequests == 3)
+                if (tamagotchi.NumberOfUnsatisfiedRequests == 3) // need check !!
                 {
                     Console.WriteLine("\nYou drove the Tamagotchi to death. You must be ashamed !");
                     Console.WriteLine();

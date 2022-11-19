@@ -25,7 +25,15 @@ namespace task
                 Console.WriteLine("Tamagotchi glows with happiness when you play with it ...");
                 return 0;
             }
+        }
 
+        // Tama name.
+        public string TamaName { get; set; }
+
+        // Constructor.
+        public Entertainment(string tamaName)
+        {
+            TamaName = tamaName;
         }
     }
 }

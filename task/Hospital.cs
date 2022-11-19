@@ -26,7 +26,15 @@ namespace task
                 Console.WriteLine("Tamagotchi feels much better ...");
                 return 0;
             }
+        }
 
+        // Tama name.
+        public string TamaName { get; set; }
+
+        // Constructor.
+        public Hospital(string tamaName)
+        {
+            TamaName = tamaName;
         }
     }
 }
