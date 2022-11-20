@@ -9,85 +9,91 @@ namespace task
     // Tamagotchi class.
     internal class Tamagotchi
     {
-        //public event MyDelegate _ev ;
         public event MyDelegate _food;
         public event MyDelegate _walk;
         public event MyDelegate _sleep;
         public event MyDelegate _hospital;
         public event MyDelegate _entertainment;
 
-        public List<MyDelegate> _list = new List<MyDelegate>();
-
-        public event MyDelegate ev
+        void IsStillAlive()
         {
-            // Используем аксессоры событий
-            add
+            if (NumberOfUnsatisfiedRequests == 3)
             {
-                _list.Add(value);
-            }
+                Console.WriteLine("\nYou drove the Tamagotchi to death. You must be ashamed !");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
 
-            remove
-            {
-                _list.Remove(value);
+                Dead();
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Press any button to throw him away !");
+                Environment.Exit(0);
             }
         }
 
+        int PreviousCase { get; set; } = 0;
         public void GeneratorEventRandom()
         {
             Random r = new Random();
-            _list.ElementAt(r.Next(0, 5)); 
-            //for (int i = 0; i < _list.Count; i++)
-            
+            int caces = -1;
+            do
+            {
+                caces = r.Next(1, 6);
+            } while (PreviousCase == caces);
 
-
-            //Console.WriteLine("Произошло событие!");
-            //if (_list.Count != 0)
-            //    foreach (MyDelegate del in _list)
-            //    {
-            //        del();
-            //    }
+            switch (caces)
+            {
+                case 1:
+                    PreviousCase = 1;
+                    NumberOfUnsatisfiedRequests += _food.Invoke();
+                    break;
+                case 2:
+                    PreviousCase = 2;
+                    NumberOfUnsatisfiedRequests += _walk.Invoke();
+                    break;
+                case 3:
+                    PreviousCase = 3;
+                    NumberOfUnsatisfiedRequests += _sleep.Invoke();
+                    break;
+                case 4:
+                    PreviousCase = 4;
+                    NumberOfUnsatisfiedRequests += _hospital.Invoke();
+                    break;
+                case 5:
+                    PreviousCase = 5;
+                    NumberOfUnsatisfiedRequests += _entertainment.Invoke();
+                    break;
+            }
+            IsStillAlive();
         }
 
-
-        // ...
-        //public List<MyDelegate> _list;
-
         // Tamagotchi name.
-        public string Name { get; set; }
-
-        //public string Stage { get; set; }
-        //ConsoleColor Color { get; set; }
-
+        string Name { get; set; }
 
         // Number of unsatisfied requests.
-        public int NumberOfUnsatisfiedRequests { get; set; } // Max 3.
-
-        //public void EventCaller()
-        //{
-        //    Console.WriteLine("A Tamagotchi event happened !!!");
-        //    _ev?.Invoke();
-        //}
+        int NumberOfUnsatisfiedRequests { get; set; } // Max 3.
 
         // Character life cycle start.
-        public DateTime LifeCycleStart { get; set; } // 60 - 120 seconds.
+        DateTime LifeCycleStart { get; set; } // 60 - 120 seconds.
 
         // Character life cycle stop.
         public DateTime LifeCycleStop { get; set; }
 
         // Tama talks.
-        public void TamaTalks(string String)
+        private void TamaTalks(string String)
         {
-            //Console.ForegroundColor = Color;
             Console.WriteLine();
             Console.Write("{0}: ", Name);
-            //Console.ForegroundColor = ConsoleColor.White;
             Console.Write(String);
             Console.WriteLine();
-            System.Threading.Thread.Sleep(1000);
+            Thread.Sleep(1000);
         }
 
         // Show Tama name.
-        public void WriteName()
+        private void WriteName()
         {
             Console.SetCursorPosition(7, 1);
             Console.WriteLine("  ♥  ♥  ♥  {0}  ♥  ♥  ♥", Name);
@@ -206,6 +212,7 @@ namespace task
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("                   ■ ■ ■ ■      ");
+            Console.WriteLine("                   ■     ■      ");
             Console.WriteLine("                   ■     ■      ");
             Console.WriteLine("             ■ ■ ■ ■     ■ ■ ■ ■");
             Console.WriteLine("             ■      R.I.P.     ■");

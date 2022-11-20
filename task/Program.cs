@@ -13,9 +13,6 @@
     /// 
     /// События, которые могут происходить с персонажем:
     /// покормить, погулять, уложить спать, полечить, поиграть.
-    ///
-    ///
-    /// 
     /// 
     /// </summary>
 
@@ -42,69 +39,24 @@
             tamagotchi._hospital += hospital.TreatTamagotchi;
             tamagotchi._entertainment += entertainment.PlayWithTamagotchi;
 
-            tamagotchi._list.Add(food.FeedTheTamagotchi);
-            tamagotchi._list.Add(walk.WalkWithTamagotchi);
-            tamagotchi._list.Add(sleep.PutTheTamagotchiToSleep);
-            tamagotchi._list.Add(hospital.TreatTamagotchi);
-            tamagotchi._list.Add(entertainment.PlayWithTamagotchi);
-
-            //tamagotchi.EventCaller();
-
-
-            // The birth of the Tamagotchi.
             tamagotchi.Hatching();
-
-            Random rand = new Random();
-            int previousValue = -1;
-            int newValue = -1;
             do
             {
-                do
-                {
-                    newValue = rand.Next(0, 5);
-                } while (newValue == previousValue);
-
-                tamagotchi.TamaTalks("");
-                //tamagotchi.NumberOfUnsatisfiedRequests = tamagotchi;
-                //Random r = new Random();
-                //int selector = r.Next(1, 6);
-                //switch (selector)
-                //{
-                //    case 1:
-                //        break;
-                //    case 2:
-                //        break;
-                //    case 3:
-                //        break;
-                //    case 1:
-                //        break;
-                //    case 1:
-                //        break;
-
                 tamagotchi.GeneratorEventRandom();
-                //}
-
-                previousValue = newValue;
-
-                if (tamagotchi.NumberOfUnsatisfiedRequests == 3) // need check !!
-                {
-                    Console.WriteLine("\nYou drove the Tamagotchi to death. You must be ashamed !");
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    Console.WriteLine();
-
-                    tamagotchi.Dead();
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    Console.WriteLine("Press any button to throw him away !");
-                    Environment.Exit(0);
-                }
 
             } while (tamagotchi.LifeCycleStop > DateTime.Now);
 
-            Console.WriteLine("\nThe end !" +
-                              "\nTamagotchi's life is over." +
+            Console.WriteLine("\nThe end !");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            tamagotchi.Dead();
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("\nTamagotchi's life is over." +
                               "\nHe lived a long and happy life !");
         }
     }

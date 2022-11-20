@@ -11,7 +11,7 @@ namespace task
         // Feed the Tamagotchi.
         public int FeedTheTamagotchi()
         {
-            Console.WriteLine("\nI want to eat ! Will you feed me ?");
+            Console.WriteLine($"\n{TamaName}: \"I want to eat ! Will you feed me ?\"");
             Console.WriteLine("1. Yes." +
                               "\n2. No.");
             int hostResponse = Convert.ToInt32(Console.ReadLine());

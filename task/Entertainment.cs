@@ -11,7 +11,7 @@ namespace task
         // Play with tamagotchi.
         public int PlayWithTamagotchi()
         {
-            Console.WriteLine("\nThe Tamagotchi has a playful mood. Do you play with him ?");
+            Console.WriteLine($"\n{TamaName}: \"I'm in such a great mood. Let's play ?\"");
             Console.WriteLine("1. Yes." +
                               "\n2. No.");
             int hostResponse = Convert.ToInt32(Console.ReadLine());

@@ -11,7 +11,7 @@ namespace task
         // Walk with tamagotchi.
         public int WalkWithTamagotchi()
         {
-            Console.WriteLine("\nI want to go for a walk. Will you go for a walk with me ?");
+            Console.WriteLine($"\n{TamaName}: \"I want to go for a walk. Will you go for a walk with me ?\"");
             Console.WriteLine("1. Yes." +
                               "\n2. No.");
             int hostResponse = Convert.ToInt32(Console.ReadLine());

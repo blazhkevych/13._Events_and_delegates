@@ -12,9 +12,9 @@ namespace task
         public int TreatTamagotchi()
         {
 
-            Console.WriteLine("\nTamagotchi doesn't feel very good. He must have gotten sick. Should we take him to the hospital for treatment ?");
-            Console.WriteLine("1. Feed the Tamagotchi." +
-                              "\n2. Refuse Tamagotchi.");
+            Console.WriteLine($"\n{TamaName}: \"Tamagotchi doesn't feel very good. He must have gotten sick. Should we take him to the hospital for treatment ?\"");
+            Console.WriteLine("1. Yes." +
+                              "\n2. No.");
             int hostResponse = Convert.ToInt32(Console.ReadLine());
             if (hostResponse == 2)
             {
