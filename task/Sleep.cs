@@ -1,39 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace task;
 
-namespace task
+internal class Sleep
 {
-    internal class Sleep
+    // Constructor.
+    public Sleep(string tamaName)
     {
-        // Put the tamagotchi to sleep.
-        public int PutTheTamagotchiToSleep()
+        TamaName = tamaName;
+    }
+
+    // Tama name.
+    private string TamaName { get; }
+
+    // Put the tamagotchi to sleep.
+    public int PutTheTamagotchiToSleep()
+    {
+        Console.WriteLine(
+            $"\n{TamaName}: \"Tamagotchi looks sleepy. He probably wants to sleep. Let's put the Tamagotchi to sleep ?\"");
+        Console.WriteLine("1. Yes." +
+                          "\n2. No.");
+        var hostResponse = Convert.ToInt32(Console.ReadLine());
+        if (hostResponse == 2)
         {
-            Console.WriteLine($"\n{TamaName}: \"Tamagotchi looks sleepy. He probably wants to sleep. Let's put the Tamagotchi to sleep ?\"");
-            Console.WriteLine("1. Yes." +
-                              "\n2. No.");
-            int hostResponse = Convert.ToInt32(Console.ReadLine());
-            if (hostResponse == 2)
-            {
-                Console.WriteLine("Tips >>> If Tamagotchi doesn't sleep, he won't live long ...");
-                return 1;
-            }
-            else
-            {
-                Console.WriteLine("Tamagotchi sleeps sweetly ...");
-                return 0;
-            }
+            Console.WriteLine("Tips >>> If Tamagotchi doesn't sleep, he won't live long ...");
+            return 1;
         }
 
-        // Tama name.
-        public string TamaName { get; set; }
-
-        // Constructor.
-        public Sleep(string tamaName)
-        {
-            TamaName = tamaName;
-        }
+        Console.WriteLine("Tamagotchi sleeps sweetly ...");
+        return 0;
     }
 }

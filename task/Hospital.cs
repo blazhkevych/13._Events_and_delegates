@@ -1,40 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace task;
 
-namespace task
+internal class Hospital
 {
-    internal class Hospital
+    // Constructor.
+    public Hospital(string tamaName)
     {
-        // Treat Tamagotchi.
-        public int TreatTamagotchi()
-        {
+        TamaName = tamaName;
+    }
 
-            Console.WriteLine($"\n{TamaName}: \"Tamagotchi doesn't feel very good. He must have gotten sick. Should we take him to the hospital for treatment ?\"");
-            Console.WriteLine("1. Yes." +
-                              "\n2. No.");
-            int hostResponse = Convert.ToInt32(Console.ReadLine());
-            if (hostResponse == 2)
-            {
-                Console.WriteLine("Tips >>> If you do not monitor the health of the Tamagotchi and do not treat him, he will soon die !");
-                return 1;
-            }
-            else
-            {
-                Console.WriteLine("Tamagotchi feels much better ...");
-                return 0;
-            }
+    // Tama name.
+    private string TamaName { get; }
+
+    // Treat Tamagotchi.
+    public int TreatTamagotchi()
+    {
+        Console.WriteLine(
+            $"\n{TamaName}: \"Tamagotchi doesn't feel very good. He must have gotten sick. Should we take him to the hospital for treatment ?\"");
+        Console.WriteLine("1. Yes." +
+                          "\n2. No.");
+        var hostResponse = Convert.ToInt32(Console.ReadLine());
+        if (hostResponse == 2)
+        {
+            Console.WriteLine(
+                "Tips >>> If you do not monitor the health of the Tamagotchi and do not treat him, he will soon die !");
+            return 1;
         }
 
-        // Tama name.
-        public string TamaName { get; set; }
-
-        // Constructor.
-        public Hospital(string tamaName)
-        {
-            TamaName = tamaName;
-        }
+        Console.WriteLine("Tamagotchi feels much better ...");
+        return 0;
     }
 }
